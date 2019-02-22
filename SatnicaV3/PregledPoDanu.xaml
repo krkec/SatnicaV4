@@ -1,0 +1,29 @@
+﻿<Window x:Name="W_PregledPoDanu" x:Class="SatnicaV3.PregledPoDanu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PregledPoDanu" Height="687" Width="432" Loaded="W_PregledPoDanu_Loaded">
+    <Grid Margin="0,10,-112,-56">
+  
+        <DataGrid AutoGenerateColumns="False" Name="grdPPD" Margin="10,0,126,75" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" RowEditEnding="grdPPD_RowEditEnding" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserReorderColumns="False" Loaded="grdPPD_Loaded" SelectionChanged="grdPPD_SelectionChanged" >
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Dan}" Value="Subota">
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Dan}" Value="Nedelja">
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID }" IsReadOnly="True" Width="70" Visibility="Hidden" Header="Dan"/>
+                <DataGridTextColumn Binding="{Binding Dan }" IsReadOnly="True" Width="70"  Header="Dan"/>
+                <DataGridTextColumn Binding="{Binding Date, StringFormat='{}{0:dd/MM/yyyy}'}"  IsReadOnly="True" Width="80" Header="Datum"/>
+                <DataGridTextColumn Binding="{Binding RZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" Header="RZ"/>
+                <DataGridTextColumn Binding="{Binding Napomena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" Header="Napomena"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
